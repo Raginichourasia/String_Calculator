@@ -1,4 +1,4 @@
-class Calculator
+class MyCalculator
   def self.add(numbers)
     0
   end
