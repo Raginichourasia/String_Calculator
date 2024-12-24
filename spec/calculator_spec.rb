@@ -10,5 +10,9 @@ RSpec.describe Calculator do
   it 'returns the number itself for a single number string' do
     expect(MyCalculator.add("1")).to eq(1)
   end
+
+  it 'returns the sum of two numbers' do
+    expect(Calculator.add("1,2")).to eq(3)
+  end
 end
 
