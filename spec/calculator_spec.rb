@@ -12,7 +12,7 @@ RSpec.describe Calculator do
   end
 
   it 'returns the sum of two numbers' do
-    expect(Calculator.add("1,2")).to eq(3)
+    expect(MyCalculator.add("1,2")).to eq(3)
   end
 end
 
