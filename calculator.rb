@@ -1,11 +1,19 @@
 class MyCalculator
-  def self.add(numbers)
-    return 0 if numbers.empty?
-    if numbers.start_with?("//")
-      delimiter, numbers = numbers[2..].split("\n", 2)
-      numbers.split(delimiter).map(&:to_i).sum
+  def self.add(input)
+    return 0 if input.strip.empty?
+
+    numbers = parse_input(input)
+    numbers.sum
+  end
+
+  private
+
+  def self.parse_input(input)
+    if input.start_with?("//")
+      delimiter, numbers = input[2..].split("\n", 2)
+      numbers.split(delimiter).map(&:to_i)
     else
-      numbers.gsub("\n", ',').split(',').map(&:to_i).sum
+      input.gsub("\n", ',').split(',').map(&:to_i)
     end
   end
 end
