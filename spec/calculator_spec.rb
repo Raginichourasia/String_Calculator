@@ -81,5 +81,11 @@ RSpec.describe MyCalculator do
         expect { MyCalculator.add("-1,-2,-3,-4") }.to raise_error("negative numbers not allowed: -1, -2, -3, -4")
       end
     end
+
+    context 'when the input contains only delimiters and no numbers' do
+      it 'returns 0' do
+        expect(MyCalculator.add("//;\n")).to eq(0)
+      end
+    end
   end
 end
