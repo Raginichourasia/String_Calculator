@@ -40,6 +40,12 @@ RSpec.describe MyCalculator do
       end
     end
 
+    context 'when the input contains multiple custom delimiters' do
+      it 'handles multiple custom delimiters and returns the sum' do
+        expect(MyCalculator.add("//[;][#]\n1;2#3")).to eq(6)
+      end
+    end
+
     context 'when the input contains both delimiters and newline characters' do
       it 'correctly handles both and returns the sum' do
         expect(MyCalculator.add("//;\n1;2\n3")).to eq(6)
