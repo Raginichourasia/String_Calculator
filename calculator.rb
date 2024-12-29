@@ -22,7 +22,13 @@ class MyCalculator
   end
 
   def self.split_numbers(input, delimiter)
-    input.split(/[\n,#{delimiter}]/).map(&:to_i)
+    input.split(/[\n,#{delimiter}]/).map do |num_str|
+      begin
+        Integer(num_str)  
+      rescue ArgumentError
+        raise "invalid number: #{num_str}"
+      end
+    end
   end
 
   def self.check_for_negative_numbers(numbers)
