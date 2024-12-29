@@ -3,8 +3,10 @@ class MyCalculator
     return 0 if input.strip.empty?
 
     numbers = parse_input(input)
-    negative_numbers = numbers.select(&:negative?)
+    numbers = numbers.reject { |n| n > 10000 }  
 
+    negative_numbers = numbers.select(&:negative?)
+    
     if negative_numbers.any?
       raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
     end
