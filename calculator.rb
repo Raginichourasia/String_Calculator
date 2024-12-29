@@ -2,8 +2,13 @@ class MyCalculator
   def self.add(input)
     return 0 if input.strip.empty?
 
-    input = input.gsub(' ', '') # Remove all spaces from input
     numbers = parse_input(input)
+    negative_numbers = numbers.select { |n| n < 0 }
+    
+    if negative_numbers.any?
+      raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
+    end
+
     numbers.sum
   end
 
