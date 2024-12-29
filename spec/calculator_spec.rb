@@ -82,6 +82,13 @@ RSpec.describe MyCalculator do
       end
     end
 
+    context 'when the input contains numbers exceeding 10000' do
+      it 'ignores numbers exceeding 10000' do
+        expect(MyCalculator.add("2,10001,3")).to eq(5)   
+        expect(MyCalculator.add("10000,10001,9999")).to eq(19999)  
+      end
+    end
+
     context 'when the input contains only delimiters and no numbers' do
       it 'returns 0' do
         expect(MyCalculator.add("//;\n")).to eq(0)
