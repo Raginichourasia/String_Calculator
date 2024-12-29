@@ -100,5 +100,11 @@ RSpec.describe MyCalculator do
         expect(MyCalculator.add("//;\n")).to eq(0)
       end
     end
+
+    context 'when the input contains invalid non-numeric characters' do
+      it 'raises an error for invalid numbers' do
+        expect { MyCalculator.add("1,abc,3") }.to raise_error("invalid number: abc")
+      end
+    end
   end
 end
