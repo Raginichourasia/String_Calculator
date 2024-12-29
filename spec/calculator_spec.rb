@@ -40,6 +40,12 @@ RSpec.describe MyCalculator do
       end
     end
 
+    context 'when the input contains both delimiters and newline characters' do
+      it 'correctly handles both and returns the sum' do
+        expect(MyCalculator.add("//;\n1;2\n3")).to eq(6)
+      end
+    end
+
     context 'when the input contains multiple spaces between numbers' do
       it 'ignores extra spaces and returns the correct sum' do
         expect(MyCalculator.add("1   ,  2   , 3")).to eq(6)
