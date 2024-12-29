@@ -10,6 +10,12 @@ RSpec.describe MyCalculator do
       end
     end
 
+    context 'when the input contains only spaces' do
+      it 'returns 0' do
+        expect(MyCalculator.add("   ")).to eq(0)
+      end
+    end
+
     context 'when the input is a single number' do
       it 'returns the number itself' do
         expect(MyCalculator.add("1")).to eq(1)
