@@ -2,29 +2,42 @@ require 'rails_helper'
 
 require_relative '../calculator'
 
-RSpec.describe Calculator do
-  it 'returns 0 for an empty string' do
-    expect(MyCalculator.add("")).to eq(0)
-  end
+RSpec.describe MyCalculator do
+  describe '.add' do
+    context 'when the input is an empty string' do
+      it 'returns 0' do
+        expect(MyCalculator.add("")).to eq(0)
+      end
+    end
 
-  it 'returns the number itself for a single number string' do
-    expect(MyCalculator.add("1")).to eq(1)
-  end
+    context 'when the input is a single number' do
+      it 'returns the number itself' do
+        expect(MyCalculator.add("1")).to eq(1)
+      end
+    end
 
-  it 'returns the sum of two numbers' do
-    expect(MyCalculator.add("1,2")).to eq(3)
-  end
+    context 'when the input contains two numbers' do
+      it 'returns their sum' do
+        expect(MyCalculator.add("1,2")).to eq(3)
+      end
+    end
 
-  it 'returns the sum of multiple numbers' do
-    expect(MyCalculator.add("1,2,3,4")).to eq(10)
-  end
+    context 'when the input contains multiple numbers' do
+      it 'returns their sum' do
+        expect(MyCalculator.add("1,2,3,4")).to eq(10)
+      end
+    end
 
-  it 'handles newlines as delimiters' do
-    expect(MyCalculator.add("1\n2,3")).to eq(6)
-  end
+    context 'when the input contains newlines as delimiters' do
+      it 'handles newlines as valid delimiters and returns the sum' do
+        expect(MyCalculator.add("1\n2,3")).to eq(6)
+      end
+    end
 
-  it 'handles custom delimiters' do
-    expect(MyCalculator.add("//;\n1;2")).to eq(3)
+    context 'when the input contains custom delimiters' do
+      it 'handles custom delimiters and returns the sum' do
+        expect(MyCalculator.add("//;\n1;2")).to eq(3)
+      end
+    end
   end
 end
-
