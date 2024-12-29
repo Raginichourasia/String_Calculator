@@ -57,5 +57,11 @@ RSpec.describe MyCalculator do
         expect { MyCalculator.add("1,-2,3") }.to raise_error("negative numbers not allowed: -2")
       end
     end
+
+    context 'when the input contains multiple negative numbers' do
+      it 'throws an exception with all negative numbers' do
+        expect { MyCalculator.add("1,-2,-3") }.to raise_error("negative numbers not allowed: -2, -3")
+      end
+    end
   end
 end
