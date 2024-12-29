@@ -3,13 +3,9 @@ class MyCalculator
     return 0 if input.strip.empty?
 
     numbers = parse_input(input)
-    numbers = numbers.reject { |n| n > 10000 }  
+    numbers = numbers.reject { |n| n > 10000 }
 
-    negative_numbers = numbers.select(&:negative?)
-    
-    if negative_numbers.any?
-      raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
-    end
+    check_for_negative_numbers(numbers)
 
     numbers.sum
   end
@@ -19,9 +15,21 @@ class MyCalculator
   def self.parse_input(input)
     if input.start_with?("//")
       delimiter, numbers = input[2..].split("\n", 2)
-      numbers.split(/[\n,#{delimiter}]/).map(&:to_i)
+      split_numbers(numbers, delimiter)
     else
-      input.gsub("\n", ',').split(',').map(&:to_i)
+      split_numbers(input, ",")
+    end
+  end
+
+  def self.split_numbers(input, delimiter)
+    input.split(/[\n,#{delimiter}]/).map(&:to_i)
+  end
+
+  def self.check_for_negative_numbers(numbers)
+    negative_numbers = numbers.select(&:negative?)
+    
+    if negative_numbers.any?
+      raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
     end
   end
 end
