@@ -1,24 +1,13 @@
-# README
+# String Calculator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple Ruby-based string calculator that implements the following functionalities:
 
-Things you may want to cover:
+- **Adding numbers**: It accepts comma-separated or newline-separated numbers and returns their sum.
+- **Custom delimiters**: It supports custom delimiters defined by the user.
+- **Negative number handling**: It raises an error if negative numbers are present in the input.
+- **Ignore numbers greater than 10000**: Any numbers greater than 10000 are ignored in the sum calculation.
+- **Error handling for invalid input**: Non-numeric input will raise an error indicating which invalid number caused the issue.
 
-* Ruby version
+## Installation
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run this project, you'll need Ruby and the `rspec` gem installed.
