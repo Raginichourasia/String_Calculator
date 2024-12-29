@@ -39,5 +39,11 @@ RSpec.describe MyCalculator do
         expect(MyCalculator.add("//;\n1;2")).to eq(3)
       end
     end
+
+    context 'when the input contains multiple spaces between numbers' do
+      it 'ignores extra spaces and returns the correct sum' do
+        expect(MyCalculator.add("1   ,  2   , 3")).to eq(6)
+      end
+    end
   end
 end
